@@ -1,0 +1,44 @@
+[
+  {
+        "desc": "登录环境为AD Login",
+        "username": "16621254498",
+        "password": "123456",
+        "expected": "Username or password is incorrect. Please try again."
+    },
+    {
+        "desc": "账号密码不匹配",
+        "username": "16621254499",
+        "password": "123456",
+        "expected": "Username or password is incorrect. Please try again."
+    },
+   {
+        "desc": "账号密码不匹配",
+        "username": "16621254498",
+        "password": "456789",
+        "expected": "Username or password is incorrect. Please try again."
+    },
+   {
+        "desc": "账号密码不匹配",
+        "username": "16621254499",
+        "password": "456789",
+        "expected": "Username or password is incorrect. Please try again."
+    },
+   {
+        "desc": "账号为空",
+        "username": "",
+        "password": "123456",
+        "expected": "Please enter Phone number/SecureNet ID"
+    },
+   {
+        "desc": "密码为空",
+        "username": "16621254498",
+        "password": "",
+        "expected": "Please enter password"
+    },
+   {
+        "desc": "登录成功",
+        "username": "16621254498",
+        "password": "123456",
+        "expected": ""
+    }
+]

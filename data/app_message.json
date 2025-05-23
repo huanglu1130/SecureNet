@@ -1,0 +1,22 @@
+[
+    {
+        "desc": "发送短文本",
+        "text": "测试一下",
+        "expected": "测试一下"
+    },
+    {
+        "desc": "发送长文本",
+        "text": "AdhQWHOEDQWOE测试一下aalsdjlqJWEDOJQO DJIOQWEDJOEWJ 慷慨大方开始都开始",
+        "expected": "AdhQWHOEDQWOE测试一下aalsdjlqJWEDOJQO DJIOQWEDJOEWJ 慷慨大方开始都开始"
+    },
+   {
+        "desc": "特殊字符",
+        "text": "|?@#$%测试一下",
+        "expected": "|?@#$%测试一下"
+    },
+   {
+        "desc": "Link",
+        "text": "https://baijiahao.baidu.com/s?id=1830029234362043599&wfr=spider&for=pc",
+        "expected": "Https://baijiahao.baidu.com/s?id=1830029234362043599&wfr=spider&for=pc"
+    }
+]
