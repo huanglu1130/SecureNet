@@ -1,1 +1,1 @@
-[{"uid":"f75e412b5f4d836c","name":"test_unblock_friends","time":{"start":1747908682840,"stop":1747908685946,"duration":3106},"status":"passed","severity":"normal"}]
+[{"uid":"c46a841da5c86fa4","name":"test_unblock_friends","time":{"start":1747985437890,"stop":1747985449074,"duration":11184},"status":"passed","severity":"normal"},{"uid":"6f0c36066f2c3987","name":"test_block_friends","time":{"start":1747985352325,"stop":1747985435645,"duration":83320},"status":"passed","severity":"normal"}]

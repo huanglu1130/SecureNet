@@ -69,4 +69,5 @@ class PageAppLogin(Base):
         self.page_app_option()
         self.page_app_click_accpet()
         self.page_app_login(username,password)
+        sleep(5)
         # PageAppSync(self.driver).page_app_click_sync()

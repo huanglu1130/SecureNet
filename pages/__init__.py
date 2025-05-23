@@ -470,3 +470,5 @@ app_friends_blocked_notice = By.XPATH,'//android.widget.TextView[@resource-id="c
 app_block_list = By.XPATH,'//android.widget.FrameLayout[@resource-id="com.mesh.im:id/item_blocked_list"]/android.widget.LinearLayout'
 #拉黑列表好友名称 test6
 app_clock_list_title = By.ID,'com.mesh.im:id/item_title'
+#移除拉黑列表
+app_unblock_friends = By.XPATH,'//android.widget.TextView[@text="Remove From Blacklist"]'
