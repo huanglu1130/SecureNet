@@ -27,9 +27,13 @@ REPORT_DIR = os.path.join(BASE_DIR, "allure-report")
 ALLURE_RESULTS = os.path.join(BASE_DIR, "allure-results")
 # TEST_FILE = os.path.join(BASE_DIR, "scripts", "test_02_app_chats.py")
 # TEST_FILE = os.path.join(BASE_DIR, "scripts", "test_01_app_login.py")
-# TEST_FILE = os.path.join(BASE_DIR, "scripts", "test_03_app_loginout.py")
+# TEST_FILE = os.path.join(BASE_DIR, "scripts", "test_10_app_loginout.py")
 # TEST_FILE = os.path.join(BASE_DIR, "scripts", "test_03_add_friends.py")
-TEST_FILE = os.path.join(BASE_DIR, "scripts", "test_04_friends_info.py")
+# TEST_FILE = os.path.join(BASE_DIR, "scripts", "test_04_friends_info.py")
+TEST_FILE = os.path.join(BASE_DIR, "scripts", "test_05_group_chat.py")
+
+# TEST_FILE = os.path.join(BASE_DIR, "scripts")
+
 
 
 
