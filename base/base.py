@@ -326,25 +326,41 @@ class Base:
         subprocess.run(["adb", "shell", "am", "force-stop", "io.appium.uiautomator2.server.test"])
         time.sleep(3)
 
-    def base_get_imgtext(self,target_text, timeout=10,poll_interval=0.01):
+    def base_get_imgtext(self,target_text, timeout=10,poll_interval=0.5):
         end_time = time.time() + timeout
         pytesseract_config = '--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         screenshot_count =0
         while time.time() < end_time:
-            # img_path = DIR_PATH + os.sep + "img" + os.sep + "{}.png".format(time.strftime("%Y%m%d%H%M%S"))
-            # self.driver.get_screenshot_as_file(img_path)
+            # # img_path = DIR_PATH + os.sep + "img" + os.sep + "{}.png".format(time.strftime("%Y%m%d%H%M%S"))
+            # # self.driver.get_screenshot_as_file(img_path)
+            # screenshot_count += 1
+            # screenshot=self.driver.get_screenshot_as_png()
+            # image = Image.open(io.BytesIO(screenshot))
+            # # 3. OCR 识别文字
+            # text = pytesseract.image_to_string(image, config=pytesseract_config, lang='chi_sim+eng')
+            # # print(text)
+
             screenshot_count += 1
-            screenshot=self.driver.get_screenshot_as_png()
-            image = Image.open(io.BytesIO(screenshot))
-            # 3. OCR 识别文字
-            custom_config = r'--oem 3 --psm 6'  # OCR引擎模式配置
-            text = pytesseract.image_to_string(image, config=custom_config, lang='chi_sim+eng')
-            # print(text)
+            # 2. 获取屏幕截图（内存流方式）
+            screenshot = self.driver.get_screenshot_as_png()
+            img = cv2.imdecode(np.frombuffer(screenshot, np.uint8), cv2.IMREAD_COLOR)
+
+            # 3. 图像预处理（关键步骤）
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+            denoised = cv2.fastNlMeansDenoising(thresh, h=10)
+
+            # 4. OCR识别（中英文混合+自定义词典）
+            text = pytesseract.image_to_string(
+                denoised,
+                config=pytesseract_config,
+                lang='chi_sim+eng'
+            )
             if target_text.lower() in text.lower():
                 print(f"成功匹配 | 截图次数: {screenshot_count} | 识别文本: {text}")
                 return text
             time.sleep(poll_interval)
-        raise TimeoutError(f"在{timeout}秒内未找到文本: {target_text}")
+        raise TimeoutError(f"在{timeout}秒内未找到文本: {target_text}截图次数: {screenshot_count}")
 
     def base_get_toast(self,target_text):
         """三重验证Toast"""

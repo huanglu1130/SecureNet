@@ -16,42 +16,47 @@ class TestAppLogin:
             print("登录环境为AD Login的场景")
             applogin.page_app_click_accpet()
             applogin.page_app_login(username,password)
-            toast_text = applogin.base_get_imgtext("Username or password is incorrect")
-            assert expected in toast_text.replace("\n", " "), \
-                f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"
+            # toast_text = applogin.base_get_imgtext("Username or password is incorrect")
+            # assert expected in toast_text.replace("\n", " "), \
+            #     f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"
+            applogin.base_get_toast(expected)
         elif desc =="账号密码不匹配":
             try:
                 applogin.page_app_option()
                 print("错误账号或者密码的场景")
                 applogin.page_app_login(username,password)
-                toast_text = applogin.base_get_imgtext("Username or password is incorrect")
-                assert expected in toast_text.replace("\n", " "), \
-                    f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"
+            #     toast_text = applogin.base_get_imgtext("Username or password is incorrect")
+            #     assert expected in toast_text.replace("\n", " "), \
+            #         f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"
+                applogin.base_get_toast(expected)
             except Exception as e:
                 print(f"发生错误:{str(e)}")
         elif desc == "账号为空":
             try:
                 print("账号为空的场景")
                 applogin.page_app_login(username, password)
-                toast_text = applogin.base_get_imgtext("Please enter Phone number/SecureNet ID")
-                assert expected in toast_text.replace("\n", " "), \
-                    f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"
+            #     toast_text = applogin.base_get_imgtext("Please enter Phone number/SecureNet ID")
+            #     assert expected in toast_text.replace("\n", " "), \
+            #         f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"
+                applogin.base_get_toast(expected)
             except Exception as e:
                 print(f"发生错误:{str(e)}")
         elif desc == "密码为空":
             try:
                 print("密码为空的场景")
                 applogin.page_app_login(username, password)
-                toast_text = applogin.base_get_imgtext("Please enter password")
-                assert expected in toast_text.replace("\n", " "), \
-                    f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"
+                # toast_text = applogin.base_get_imgtext("Please enter password")
+            #     assert expected in toast_text.replace("\n", " "), \
+            #         f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"
+                applogin.base_get_toast(expected)
             except Exception as e:
                 print(f"发生错误:{str(e)}")
+
         else:
             try:
                 print("登录成功的场景")
                 applogin.page_app_login(username, password)
-                time.sleep(20)
+                # time.sleep(20)
                 # toast_text = self.app.base_get_imgtext("Please enter password")
                 # assert expected in toast_text.replace("\n", " "), \
                 #     f"未找到错误提示文本，实际OCR结果: {toast_text.replace("\n", " ")}"

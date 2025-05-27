@@ -472,3 +472,14 @@ app_block_list = By.XPATH,'//android.widget.FrameLayout[@resource-id="com.mesh.i
 app_clock_list_title = By.ID,'com.mesh.im:id/item_title'
 #移除拉黑列表
 app_unblock_friends = By.XPATH,'//android.widget.TextView[@text="Remove From Blacklist"]'
+
+
+##群聊
+app_group_name_title = By.XPATH,'//android.widget.TextView[@text="Set Group Name"]'
+#群聊名称
+app_group_chat_name = By.ID,'com.mesh.im:id/edittext'
+app_group_chat_name_done = By.XPATH,'//android.widget.TextView[@text="Done"]'
+#选择群聊成员
+app_group_chat_member_1 = By.XPATH,'(//android.widget.ImageView[@resource-id="com.mesh.im:id/avatar"])[3]'
+app_group_chat_member_2 = By.XPATH,'(//android.widget.ImageView[@resource-id="com.mesh.im:id/avatar"])[4]'
+app_group_chat_done = By.XPATH,'//android.widget.Button[@resource-id="com.mesh.im:id/bt_ok"]'

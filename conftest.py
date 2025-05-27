@@ -8,6 +8,7 @@ from pages.page_chats import PageAppChats
 from pages.page_login import PageAppLogin
 from pages.page_login_out import PageAppLoginOut
 from pages.page_friends_info import PageAppFriendsInfo
+from pages.page_group_chat import PageGroupChat
 import pytest
 import time
 from pathlib import Path
@@ -67,33 +68,39 @@ def friends_info(app_driver):  # 依赖app_driver fixture
     friends_info= PageAppFriendsInfo(app_driver)  # 传入driver
     yield friends_info
 
+@pytest.fixture
+def group_chat(app_driver):  # 依赖app_driver fixture
+    """提供应用实例"""
+    group_chat= PageGroupChat(app_driver)  # 传入driver
+    yield group_chat
+
 
 import pytest
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.common.exceptions import NoSuchElementException
 
-@pytest.fixture(autouse=True)  # autouse=True 自动应用于所有测试用例
-def back_to_home(request, app_driver):
-    """每个用例执行后，尝试回到首页"""
-    yield  # 先执行测试用例
-    try:
-        time.sleep(1)
-        for _ in range(5):
-            app_driver.press_keycode(4) # 4 = Android 返回键
-            if check_is_home(app_driver):
-                break
-            time.sleep(1)
-    except Exception as e:
-        print(f"返回首页失败: {e}")
-        app_driver.reset_app()  # 终极方案：重置应用
-
-def check_is_home(app_driver):
-    """检查当前是否在首页"""
-    try:
-        element = WebDriverWait(app_driver, 5).until(
-            EC.element_to_be_clickable((AppiumBy.ID, 'com.mesh.im:id/tv_tab_chat'))
-        )
-        element.click()
-        return True
-    except NoSuchElementException:
-        return False
+# @pytest.fixture(autouse=True)  # autouse=True 自动应用于所有测试用例
+# def back_to_home(request, app_driver):
+#     """每个用例执行后，尝试回到首页"""
+#     yield  # 先执行测试用例
+#     try:
+#         time.sleep(1)
+#         for _ in range(5):
+#             app_driver.press_keycode(4) # 4 = Android 返回键
+#             if check_is_home(app_driver):
+#                 break
+#             time.sleep(1)
+#     except Exception as e:
+#         print(f"返回首页失败: {e}")
+#         app_driver.reset_app()  # 终极方案：重置应用
+#
+# def check_is_home(app_driver):
+#     """检查当前是否在首页"""
+#     try:
+#         element = WebDriverWait(app_driver, 5).until(
+#             EC.element_to_be_clickable((AppiumBy.ID, 'com.mesh.im:id/tv_tab_chat'))
+#         )
+#         element.click()
+#         return True
+#     except NoSuchElementException:
+#         return False

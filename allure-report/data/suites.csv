@@ -1,3 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","11184","test_unblock_friends","scripts","Fri May 23 15:30:37 CST 2025","passed","Fri May 23 15:30:49 CST 2025","TestAppFriendsInfo","test_04_friends_info","",""
-"","83320","test_block_friends","scripts","Fri May 23 15:29:12 CST 2025","passed","Fri May 23 15:30:35 CST 2025","TestAppFriendsInfo","test_04_friends_info","",""
+"","12987","test_block_friends","scripts","Tue May 27 14:00:28 CST 2025","passed","Tue May 27 14:00:41 CST 2025","TestAppGroupChat","test_05_group_chat","",""
